@@ -16,20 +16,22 @@
   <div class="wrapper">
     <section class="player computer">
       <h1>The computer plays:</h1>
-      <h2 id="computer-hand">Rock</h2>
+      <h2 id="computer-hand"></h2>
     </section>
-      <section class="player">
-        <h1>Winner:</h1>
-        <span id="winner"></span>
-        <br>
-        Comp. Win(%): <span id="win-percent"></span>
-      </section>
+    <section class="player">
+      <h1>Outcome:</h1>
+      <span id="result"></span>
+      <br>
+      Computer Win Percentage: <span id="win-percent"></span>
+      <br>
+      Total Games: <span id="total-games"></span>
+    </section>
     <section class="player user">
       <h1>Choose your hand:</h1>
       <ul id="hand-buttons">
-        <li><button class="hand-button" id="rock">Rock</button></li>
-        <li><button class="hand-button" id="paper">Paper</button></li>
-        <li><button class="hand-button" id="scissors">Scissors</button></li>
+        <li><input type="button" value="rock" class="hand-button" id="rock"></li>
+        <li><input type="button" value="paper" class="hand-button" id="paper"></li>
+        <li><input type="button" value="scissors" class="hand-button" id="scissors"></li>
       </ul>
     </section>
   </div>
