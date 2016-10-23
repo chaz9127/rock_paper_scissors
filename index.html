@@ -8,32 +8,69 @@
   <meta name="description" content="Rock Paper Scissors">
   <meta name="author" content="SitePoint">
 
-  <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/data_box.css">
 
 </head>
 
 <body>
-  <div class="wrapper">
-    <section class="player computer">
-      <h1>The computer plays:</h1>
-      <h2 id="computer-hand"></h2>
-    </section>
-    <section class="player">
-      <h1>Outcome:</h1>
-      <span id="result"></span>
-      <br>
-      Computer Win Percentage: <span id="win-percent"></span>
-      <br>
-      Total Games: <span id="total-games"></span>
-    </section>
-    <section class="player user">
-      <h1>Choose your hand:</h1>
-      <ul id="hand-buttons">
-        <li><input type="button" value="rock" class="hand-button" id="rock"></li>
-        <li><input type="button" value="paper" class="hand-button" id="paper"></li>
-        <li><input type="button" value="scissors" class="hand-button" id="scissors"></li>
-      </ul>
-    </section>
+  <div class="data-wrapper">
+    <div class="row">
+      <div class="header-block">
+        <span class="header-block-title">Computer Player</span>
+        <br>
+        <span id="computer-hand" class="header-block-data">Rock</span>
+      </div>
+      <div class="header-block">
+        <br>
+        <span class="header-block-data">Vs.</span>
+      </div>
+      <div class="header-block">
+        <span class="header-block-title">You</span>
+        <br>
+        <span id="user-hand" class="header-block-data">Rock</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <section class="player-option">
+        <span id="rock" class="btn" data-hand="rock">Rock</span>
+      </section>
+      <section class="player-option">
+        <span id="paper" class="btn" data-hand="paper">Paper</span>
+      </section>
+      <section class="player-option">
+        <span id="scissors" class="btn" data-hand="scissors">Scissors</span>
+      </section>
+    </div>
+    <div class="row">
+      <section class="data-box">
+        <h1 class="data-box-heading">Player Wins</h1>
+        <p id="user-wins" class="data-box-result">
+          0
+        </p>
+      </section>
+      <section class="data-box">
+        <h1 class="data-box-heading">Computer Wins</h1>
+        <p id="computer-wins" class="data-box-result">
+          0
+        </p>
+      </section>
+    </div>
+    <div class="row">
+      <section class="data-box">
+        <h1 class="data-box-heading">Total Games</h1>
+        <p id="total-games" class="data-box-result">
+          0
+        </p>
+      </section>
+      <section class="data-box">
+        <h1 class="data-box-heading">Computer Win Percentage</h1>
+        <p id="win-percent" class="data-box-result">
+          0%
+        </p>
+      </section>
+    </div>
   </div>
 
   <script src="javascript/main.js"></script>
