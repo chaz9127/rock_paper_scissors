@@ -13,6 +13,27 @@
 </head>
 
 <body>
+  <div class="wrapper">
+    <section class="player computer">
+      <h1>The computer plays:</h1>
+      <h2 id="computer-hand">Rock</h2>
+    </section>
+      <section class="player">
+        <h1>Winner:</h1>
+        <span id="winner"></span>
+        <br>
+        Comp. Win(%): <span id="win-percent"></span>
+      </section>
+    <section class="player user">
+      <h1>Choose your hand:</h1>
+      <ul id="hand-buttons">
+        <li><button class="hand-button" id="rock">Rock</button></li>
+        <li><button class="hand-button" id="paper">Paper</button></li>
+        <li><button class="hand-button" id="scissors">Scissors</button></li>
+      </ul>
+    </section>
+  </div>
+
   <script src="javascript/main.js"></script>
 </body>
 </html>

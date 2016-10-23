@@ -1,1 +1,35 @@
 /* Main Styles */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+.wrapper {
+  display: flex;
+}
+h1 {
+  text-decoration: underline;
+}
+.player {
+  box-sizing: border-box;
+  flex: auto;
+  text-align: center;
+}
+.computer {
+  flex: auto;
+  text-align: left;
+}
+.user {
+  flex: auto;
+  text-align: right;
+}
+#hand-buttons {
+  list-style-type: none;
+}
+#hand-buttons li {
+  display: inline-block;
+}
+.hand-button {
+  width: 75px;
+  height: 50px;
+  margin:50px 20px
+}
