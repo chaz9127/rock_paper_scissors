@@ -1,0 +1,92 @@
+.data-wrapper {
+  width: 550px;
+  margin:0 auto;
+  font-family: 'Lato', sans-serif;
+}
+
+.row {
+  display: flex;
+  margin-top: 30px;
+}
+
+.data-box {
+  flex: auto;
+  border: 1px solid #eee;
+  margin: 10px 5px;
+  padding: 10px;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
+}
+.data-box:nth-child(2n) {
+  page-break-after: always; /* CSS 2.1 syntax */
+  break-after: always; /* New syntax */
+}
+
+.data-box-heading {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  width: 200px;
+}
+
+.data-box-result {
+  font-size: 36px;
+  font-weight: 500;
+  width: 200px;
+  margin: 10px;
+}
+
+.player-option {
+  flex: auto;
+  display: block;
+}
+
+.player-option .btn{
+  display: block;
+  vertical-align: middle;
+  text-align: center;
+  width: 158px;
+  padding: 15px 10px;
+  border-radius: 3px;
+  font-size: 18px;
+  color: #FFF;
+  text-decoration: none;
+  background-color: #3498db;
+  border-bottom: 5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+  cursor: pointer;
+}
+
+.player-option .btn:active
+{
+ transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+ border-bottom: 1px solid;
+}
+
+.header-block {
+  flex: auto;
+  text-align: center;
+}
+.header-block:first-child {
+  text-align: left;
+}
+.header-block:last-child {
+  text-align: right;
+}
+
+.header-block-title, .header-block-data {
+  width: 130px;
+  display: inline-block;
+}
+
+.header-block-title {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.header-block-data {
+  font-size: 36px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
