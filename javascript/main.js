@@ -9,6 +9,13 @@ var totalGames = document.getElementById('total-games');
 var computerWins = document.getElementById('computer-wins');
 var userWins = document.getElementById('user-wins');
 var trainingData = ['rock', 'paper', 'rock', 'scissors', 'rock', 'paper', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'scissors', 'rock', 'scissors', 'paper', 'rock', 'scissors', 'paper', 'rock', 'rock', 'scissors', 'rock', 'paper', 'paper', 'paper', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'rock', 'scissors', 'scissors', 'paper', 'rock', 'rock', 'paper', 'scissors', 'rock', 'rock', 'paper', 'scissors', 'paper', 'rock', 'rock', 'paper', 'paper', 'scissors', 'rock', 'paper', 'paper', 'rock', 'rock', 'rock', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'paper', 'rock', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'rock', 'rock', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'paper', 'paper', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'rock', 'scissors', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'rock', 'paper', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'rock', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'scissors', 'paper', 'rock', 'rock', 'paper', 'scissors', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'paper', 'rock', 'rock', 'rock', 'rock', 'paper', 'scissors', 'scissors', 'scissors', 'paper', 'scissors', 'rock', 'rock', 'paper', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'paper', 'scissors', 'rock', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'rock', 'rock', 'scissors', 'paper', 'rock', 'rock', 'paper', 'scissors', 'paper', 'rock', 'paper', 'rock', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'paper', 'rock', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'rock']
+var WINNING_COMBINATIONS = {
+  //userHand: computerHand
+  'rock': 'paper',
+  'paper': 'scissors',
+  'scissors': 'rock'
+}
+var CHOICES = ['rock', 'paper', 'scissors'];
 
 rockButton.onclick = buttonClicked;
 paperButton.onclick = buttonClicked;
@@ -59,11 +66,18 @@ function buttonClicked() {
 }
 
 function computerHandChoice(){
+  var predictUser = predictUserPlay();
+  var pick = WINNING_COMBINATIONS[predictUser]
+  computerHand.innerHTML =  pick;
+  return pick;
+}
+
+function predictUserPlay() {
   var pick = Math.floor(Math.random()*(2-0+1)+0);
-  var choices = ["rock", "paper", "scissors"];
-  var choice = choices[pick];
-  computerHand.innerHTML =  choice;
-  return choice;
+  var prediction = CHOICES[pick];
+  console.log("Computer predicts user will play: " + prediction)
+  return prediction
+
 }
 
 function victor(player) {
