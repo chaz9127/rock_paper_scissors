@@ -8,6 +8,7 @@ var winPercent = document.getElementById('win-percent');
 var totalGames = document.getElementById('total-games');
 var computerWins = document.getElementById('computer-wins');
 var userWins = document.getElementById('user-wins');
+var trainingData = ['rock', 'paper', 'rock', 'scissors', 'rock', 'paper', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'scissors', 'rock', 'scissors', 'paper', 'rock', 'scissors', 'paper', 'rock', 'rock', 'scissors', 'rock', 'paper', 'paper', 'paper', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'rock', 'scissors', 'scissors', 'paper', 'rock', 'rock', 'paper', 'scissors', 'rock', 'rock', 'paper', 'scissors', 'paper', 'rock', 'rock', 'paper', 'paper', 'scissors', 'rock', 'paper', 'paper', 'rock', 'rock', 'rock', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'paper', 'rock', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'rock', 'rock', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'paper', 'paper', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'rock', 'scissors', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'rock', 'paper', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'rock', 'scissors', 'paper', 'scissors', 'rock', 'paper', 'rock', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'scissors', 'paper', 'rock', 'rock', 'paper', 'scissors', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'paper', 'rock', 'rock', 'rock', 'rock', 'paper', 'scissors', 'scissors', 'scissors', 'paper', 'scissors', 'rock', 'rock', 'paper', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'paper', 'scissors', 'rock', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'rock', 'paper', 'scissors', 'paper', 'rock', 'rock', 'scissors', 'paper', 'rock', 'rock', 'paper', 'scissors', 'paper', 'rock', 'paper', 'rock', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'paper', 'rock', 'scissors', 'paper', 'rock', 'paper', 'scissors', 'rock']
 
 rockButton.onclick = buttonClicked;
 paperButton.onclick = buttonClicked;
@@ -15,6 +16,12 @@ scissorsButton.onclick = buttonClicked;
 
 var gameObject = {
   "totalGames": 0,
+  "lastPlay": {
+    //computerHand
+    //playerHand
+    //victor
+  },
+  "playerHistory": [],
   addGame: function() {
     this.totalGames++;
     totalGames.innerHTML = this.totalGames;
@@ -43,9 +50,12 @@ function buttonClicked(event) {
   var computerPlay = computerHandChoice();
   userHand.style.color = "#000";
   computerHand.style.color = "#000";
-  var hand = this.getAttribute("data-hand")
-  userHand.innerHTML = hand
-  compareResults(computerPlay, hand);
+  var playerHand = this.getAttribute("data-hand")
+  userHand.innerHTML = playerHand
+  gameObject.lastPlay.computerHand = computerPlay;
+  gameObject.lastPlay.playerHand = playerHand;
+  gameObject.playerHistory.push(playerHand)
+  compareResults(computerPlay, playerHand);
 }
 
 function computerHandChoice(){
@@ -58,7 +68,7 @@ function computerHandChoice(){
 
 function victor(player) {
   player.win();
-  postResult(player)
+  postResult(player);
 }
 
 function tie(){
@@ -67,13 +77,16 @@ function tie(){
 
 function postResult(winner) {
   if(winner) {
+    gameObject.lastPlay.victor = winner.type;
     var winnerElement = document.getElementById(winner.type + "-hand");
     winnerElement.style.color = "green";
   }else {
+    gameObject.lastPlay.victor = "tie";
     userHand.style.color = "#8b0000";
     computerHand.style.color = "#8b0000";
   }
   gameObject.addGame();
+  createMatchHistoryRow();
   winPercent.innerHTML = Math.floor((computerObject.totalWins / gameObject.totalGames) * 100) + "%";
   totalGames.innerHTML = gameObject.totalGames;
 }
@@ -94,4 +107,34 @@ function compareResults(comp, user) {
       (user == "rock") ? victor(userObject) : victor(computerObject);
       break;
   }
+}
+
+function createMatchHistoryRow() {
+  var table = document.getElementById("match-history-table");
+  var row = table.insertRow(0);
+  var handPlay = row.insertCell(0);
+  var handOutcome = row.insertCell(1);
+  handPlay.className =  "hand-play";
+  handOutcome.className =  "hand-outcome";
+
+  var playText = gameObject.lastPlay.computerHand + " - " + gameObject.lastPlay.playerHand
+  var outcomeText = "";
+
+  switch(gameObject.lastPlay.victor) {
+    case "user":
+      outcomeText = "W";
+      handOutcome.className +=  " win";
+      break;
+    case "computer":
+      outcomeText = "L";
+      handOutcome.className +=  " lose";
+      break;
+    case "tie":
+      outcomeText = "T";
+      handOutcome.className +=  " tie";
+      break;
+  }
+
+  handPlay.innerHTML = playText;
+  handOutcome.innerHTML = outcomeText;
 }

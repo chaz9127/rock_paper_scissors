@@ -53,12 +53,14 @@ h1 {
 .hand-play {
   width: 470px;
   text-align: center;
+  text-transform: capitalize;
 }
 .hand-outcome {
   font-weight: bold;
   border-left:1px solid #ccc;
   font-size: 42px;
   padding: 5px 20px;
+  text-transform: capitalize;
 }
 .hand-outcome.win {
   background-color: #dff0d8;
