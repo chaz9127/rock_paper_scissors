@@ -46,7 +46,7 @@ var userObject = {
   }
 };
 
-function buttonClicked(event) {
+function buttonClicked() {
   var computerPlay = computerHandChoice();
   userHand.style.color = "#000";
   computerHand.style.color = "#000";
@@ -137,4 +137,20 @@ function createMatchHistoryRow() {
 
   handPlay.innerHTML = playText;
   handOutcome.innerHTML = outcomeText;
+}
+
+function automate() {
+  for (var i = 0; i < trainingData.length; i++) {
+    switch(trainingData[i]) {
+      case "rock":
+        rockButton.click();
+        break;
+      case "paper":
+        paperButton.click();
+        break;
+      case "scissors":
+        scissorsButton.click();
+        break;
+    }
+  }
 }
