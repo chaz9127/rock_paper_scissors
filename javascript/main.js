@@ -23,8 +23,6 @@ scissorsButton.onclick = buttonClicked;
 
 function buttonClicked() {
   var computerPlay = ComputerObject.handChoice();
-  userHand.style.color = "#000";
-  computerHand.style.color = "#000";
   var playerHand = this.getAttribute("data-hand")
   userHand.innerHTML = playerHand
   GameObject.lastPlay.computerHand = computerPlay;
