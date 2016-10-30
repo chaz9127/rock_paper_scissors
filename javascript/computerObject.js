@@ -12,9 +12,15 @@ var ComputerObject = {
   },
   predictUserPlay: function() {
     if(GameObject.firstPlay())
-      return "rock"
-    if(this.doublePlay())
-      return this.doublePlay()
+      return "rock";
+
+    doublePlay = this.doublePlay();
+    if(doublePlay)
+      return doublePlay;
+
+    lostLastHand = this.lostLastHand();
+    if(lostLastHand)
+      return lostLastHand;
 
     var pick = Math.floor(Math.random()*3);
     var prediction = CHOICES[pick]
@@ -37,6 +43,20 @@ var ComputerObject = {
       prediction = possiblePicks[pick];
     };
     return prediction;
+  },
+  lostLastHand: function() {
+    var prediction = null;
+
+    var lastPlayHand = GameObject.lastPlay.playerHand
+    if(GameObject.lastPlay.victor == "computer") {
+      var pick = (Math.floor(Math.random()*2)+1) - 1;
+      var possiblePicks = [
+        WINNING_COMBINATIONS[lastPlayHand],
+        WINNING_COMBINATIONS[WINNING_COMBINATIONS[lastPlayHand]]
+      ];
+      prediction = possiblePicks[pick];
+    }
+    return prediction
   }
 
 };
