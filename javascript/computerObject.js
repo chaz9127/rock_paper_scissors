@@ -12,18 +12,15 @@ var ComputerObject = {
   },
   predictUserPlay: function() {
     if(GameObject.firstPlay())
-      return "scissors";
+      return "rock";
 
     doublePlay = this.doublePlay();
-    if(doublePlay){
-      console.log("running double play rule");
+    if(doublePlay)
       return doublePlay;
-    }
+
     lostLastHand = this.lostLastHand();
-    if(lostLastHand){
-      console.log("running lost last hand rule");
+    if(lostLastHand)
       return lostLastHand;
-    }
 
     var pick = Math.floor(Math.random()*3);
     var prediction = CHOICES[pick]
