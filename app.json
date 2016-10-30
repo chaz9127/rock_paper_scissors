@@ -1,0 +1,8 @@
+{
+  "name": "Rock Paper Scissors: Artifical Intelligence",
+  "description": "A simple RPS: AI that predicts your moves before you do.",
+  "repository": "https://github.com/chaz9127/rock_paper_scissors",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node"],
+  "image": "heroku/nodejs"
+}

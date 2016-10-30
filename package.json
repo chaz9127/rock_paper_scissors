@@ -1,0 +1,20 @@
+{
+  "name": "rock_paper_scissors",
+  "version": "0.2",
+  "description": "Create a rock paper scissors program that consistently wins more than 40% of the time with a sample size of at least 200;",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaz9127/rock_paper_scissors.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chaz9127/rock_paper_scissors/issues"
+  },
+  "homepage": "https://github.com/chaz9127/rock_paper_scissors#readme"
+}
