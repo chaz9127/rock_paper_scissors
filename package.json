@@ -1,6 +1,6 @@
 {
   "name": "rock_paper_scissors",
-  "version": "0.2",
+  "version": "1.0.1",
   "description": "Create a rock paper scissors program that consistently wins more than 40% of the time with a sample size of at least 200;",
   "main": "index.js",
   "scripts": {
