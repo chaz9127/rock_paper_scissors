@@ -10,6 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/chaz9127/rock_paper_scissors.git"
   },
+  "engines": {
+    "node": "5.9.1"
+  },
+  "dependencies": {
+    "ejs": "2.4.1",
+    "express": "4.13.3"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
