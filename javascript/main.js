@@ -23,26 +23,38 @@ scissorsButton.onclick = buttonClicked;
 
 function buttonClicked() {
   var computerPlay = ComputerObject.handChoice();
-  var playerHand = this.getAttribute("data-hand")
-  userHand.innerHTML = playerHand
-  GameObject.lastPlay.computerHand = computerPlay;
-  GameObject.lastPlay.playerHand = playerHand;
-  GameObject.playerHistory.push(playerHand)
-  GameObject.compareResults(computerPlay, playerHand);
+  var userPlay = this.getAttribute("data-hand")
+  playHands(userPlay, computerPlay);
+  GameObject.compareResults(computerPlay, userPlay);
+}
+
+function playHands(user, comp) {
+  GameObject.lastPlay.playerHand = user;
+  GameObject.lastPlay.computerHand = comp;
+  computerHand.style.color = "#000";
+  userHand.style.color = "#000";
+  userHand.innerHTML = user
+  computerHand.innerHTML = comp
+
+  var playerHistoryObject = {};
+  playerHistoryObject[user] = comp
+  GameObject.playerHistory.push(playerHistoryObject);
 }
 
 function automate() {
-  for (var i = 0; i < TRAINING_DATA.length; i++) {
-    switch(TRAINING_DATA[i]) {
-      case "rock":
-        rockButton.click();
-        break;
-      case "paper":
-        paperButton.click();
-        break;
-      case "scissors":
-        scissorsButton.click();
-        break;
+  for (var j = 0; j < 5; j++) {
+    for (var i = 0; i < TRAINING_DATA.length; i++) {
+      switch(TRAINING_DATA[i]) {
+        case "rock":
+          rockButton.click();
+          break;
+        case "paper":
+          paperButton.click();
+          break;
+        case "scissors":
+          scissorsButton.click();
+          break;
+      }
     }
   }
 }
