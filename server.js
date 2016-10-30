@@ -1,18 +1,47 @@
 // content of index.js
 const http = require('http')
-const port = process.env.PORT || 5000
+const path = require("path");
+const fs = require("fs");
+const mime = require("mime");
 
-const requestHandler = (request, response) => {
-  console.log(request.url)
-  response.end()
-}
+const server = http.createServer(function(request, response) {
+  var filePath = false;
 
-const server = http.createServer(requestHandler)
-
-server.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
+  if (request.url == '/') {
+    filePath = "public/index.html";
+  } else {
+    filePath = "public" + request.url;
   }
 
-  console.log(`server is listening on ${port}`)
-})
+  var absPath = "./" + filePath;
+  serverWorking(response, absPath);
+});
+
+function serverWorking(response, absPath) {
+  fs.exists(absPath, function(exists) {
+    if (exists) {
+      fs.readFile(absPath, function(err, data) {
+        if (err) {
+          send404(response)
+        } else {
+          sendPage(response, absPath, data);
+        }
+      });
+    } else {
+      send404(response);
+    }
+  });
+}
+
+const port_number = server.listen(process.env.PORT || 3000);
+
+function send404(response) {
+  response.writeHead(404, {"Content-type" : "text/plain"});
+  response.write("Error 404: resource not found");
+  response.end();
+}
+
+function sendPage(response, filePath, fileContents) {
+  response.writeHead(200, {"Content-type" : mime.lookup(path.basename(filePath))});
+  response.end(fileContents);
+}
